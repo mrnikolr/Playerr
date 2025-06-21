@@ -149,10 +149,6 @@
         <video id="player" autoplay muted controls crossorigin playsinline></video>
     </div>
 
-    <div class="notification" id="notification">
-        Join @matcheslinks for more updates →
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.3/dist/hls.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.js"></script>
     <script>
@@ -266,7 +262,15 @@
                     errorElement.style.display = 'flex';
                 }
             }
-         });
+            
+            // Handle retry button
+            retryBtn.addEventListener('click', initPlayer);
+            
+            // Handle notification click
+            notification.addEventListener('click', () => {
+                window.open('https://t.me/MARKA', '_blank');
+                notification.classList.remove('show');
+            });
             
             // Handle fullscreen orientation
             document.addEventListener('fullscreenchange', () => {
